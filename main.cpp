@@ -8,8 +8,24 @@ class Task
 {
 	public:
 	std::string _description;
+	bool completed = false;
 	Task(std::string description){
 		_description = description;
+	}
+	void complete()
+	{
+		completed = true;
+	}
+	void getStatus()
+	{
+		if(completed)
+		{
+			cout<<"Task is completed"<<endl;
+		}
+		else
+		{
+			cout<<"Task is not completed"<<endl;
+		}
 	}
 };
 
@@ -38,6 +54,8 @@ int main()
     cin >> new_task;
     todo.add_Todo(new_task);
     cout<<todo.todolist.at(0)._description<<endl;
+	todo.todolist.at(0).complete();
+	todo.todolist.at(0).getStatus();
 
     return 0;
 }
