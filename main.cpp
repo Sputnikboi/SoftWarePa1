@@ -47,6 +47,12 @@ class TodoList
 		cout<<"New task Added" << endl;
 	};
 
+	void delete_Todo(int index)
+	{
+		todolist.erase(todolist.begin()+index);
+		cout<<"Task removed" << endl;
+	}
+
 	Task& getTask(int index)
 	{
 		return todolist.at(index);
@@ -64,8 +70,9 @@ int main()
 	{
 		cout<<"1. Add a new task"<<endl;
 		cout<<"2. Complete a task"<<endl;
-		cout<<"3. Display all tasks"<<endl;
-		cout<<"4. Exit"<<endl;
+		cout<<"3. Remove tasks"<<endl;
+		cout<<"4. Display all tasks"<<endl;
+		cout<<"5. Exit"<<endl;
 		cin>>choice;
 		switch(choice)
 		{
@@ -80,6 +87,11 @@ int main()
 				todo.getTask(stoi(task)-1).complete();
 				break;
 			case 3:
+				cout<<"Enter task number to be removed"<<endl;
+				cin>>task;
+				todo.delete_Todo(stoi(task)-1);
+				break;
+			case 4:
 				if (todo.todolist.size() == 0)
 				{
 					cout<<""<<endl;
@@ -96,7 +108,7 @@ int main()
 				}
 				cout<<""<<endl;
 				break;
-			case 4:
+			case 5:
 				exit(0);
 				break;
 			default:
@@ -105,3 +117,4 @@ int main()
 	}
     return 0;
 }
+
