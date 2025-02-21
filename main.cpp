@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+using namespace std;
 
 class Task
 {
@@ -18,11 +19,25 @@ class TodoList
 	public:
 	std::vector<Task> todolist;
 	TodoList(){}
+	
+	
+	void add_Todo(std::string description)
+	{
+		todolist.push_back(Task(description));
+		cout<<"New task Added" << endl;
+	};
 };
 
-int main() {
 
+
+int main() 
+{
+    std::string new_task;
     TodoList todo = TodoList();
+    cout<<"Create a new task"<<endl;
+    cin >> new_task;
+    todo.add_Todo(new_task);
+    cout<<todo.todolist.at(0)._description<<endl;
 
     return 0;
 }
