@@ -31,6 +31,13 @@ class Task
 			cout<<"Task is not completed"<<endl;
 		}
 	}
+
+	void editTask(std::string description)
+	{
+		_description = description;
+		cout<<"Task edited"<<endl;
+	}
+
 };
 
 class TodoList
@@ -65,6 +72,7 @@ int main()
 {
 	int choice;
 	std::string task;
+	std::string temp;
 	TodoList todo;
 	while(1)
 	{
@@ -72,13 +80,16 @@ int main()
 		cout<<"2. Complete a task"<<endl;
 		cout<<"3. Remove tasks"<<endl;
 		cout<<"4. Display all tasks"<<endl;
-		cout<<"5. Exit"<<endl;
+		cout<<"5. Edit a task"<<endl;
+		cout<<"6. Exit"<<endl;
 		cin>>choice;
+		cin.ignore();
+		cout<<""<<endl;
 		switch(choice)
 		{
 			case 1:
 				cout<<"Enter the task description"<<endl;
-				cin>>task;
+				getline(cin, task);
 				todo.add_Todo(task);
 				break;
 			case 2:
@@ -109,6 +120,14 @@ int main()
 				cout<<""<<endl;
 				break;
 			case 5:
+				cout<<"Enter task number to be edited"<<endl;
+				cin>>task;
+				cin.ignore();
+				cout<<"Enter new task description"<<endl;
+				getline(cin, temp);
+				todo.getTask(stoi(task)-1).editTask(temp);
+				break;
+			case 6:
 				exit(0);
 				break;
 			default:
